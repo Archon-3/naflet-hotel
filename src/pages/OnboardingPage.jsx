@@ -12,6 +12,7 @@ const OnboardingPage = ({ onComplete }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
 
+  // Cards content for the onboarding page with logs
   const cards = [
     { 
       id: 1, 
@@ -75,22 +76,20 @@ const OnboardingPage = ({ onComplete }) => {
     onComplete();
   };
 
+  // Log initial card view
   useEffect(() => {
     console.log(cards[activeIndex].log);
   }, []);
 
   return (
     <div style={{
-      height: "100vh",
-      width: "100vw",
+      minHeight: "100vh",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      backgroundColor: "#1a202c",
-      overflow: "hidden",
-      padding: 0,
-      margin: 0
+      padding: "16px",
+      backgroundColor: "#1a202c"
     }}>
       <h1 style={{
         fontSize: "28px",
@@ -102,7 +101,7 @@ const OnboardingPage = ({ onComplete }) => {
         Welcome to Naflet Hotel Adama!
       </h1>
 
-      <div style={{ position: "relative", width: "100vw", height: "calc(100vh - 200px)" }}>
+      <div style={{ position: "relative", width: "100%", maxWidth: "1000px" }}>
         {activeIndex > 0 && (
           <button
             onClick={() => handleScroll(-1)}
@@ -130,7 +129,6 @@ const OnboardingPage = ({ onComplete }) => {
             overflowX: "auto",
             scrollSnapType: "x mandatory",
             width: "100%",
-            height: "100%",
             scrollbarWidth: "none",
             WebkitOverflowScrolling: "touch"
           }}
@@ -143,20 +141,19 @@ const OnboardingPage = ({ onComplete }) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               style={{
                 flex: "0 0 100%",
-                scrollSnapAlign: "center",
-                height: "100%"
+                scrollSnapAlign: "center"
               }}
             >
               <div style={{
-                width: "100%",
-                height: "100%",
+                maxWidth: "800px",
                 margin: "auto",
                 backgroundColor: "white",
                 borderRadius: "16px",
                 boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.15)",
-                overflow: "hidden"
+                overflow: "hidden",
+                marginBottom: "20px"
               }}>
-                <div style={{ position: "relative", height: "70%" }}>
+                <div style={{ position: "relative", height: "300px" }}>
                   <img 
                     src={card.image}
                     alt={`Slide ${card.id}`}
@@ -168,7 +165,7 @@ const OnboardingPage = ({ onComplete }) => {
                     background: "linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent)"
                   }} />
                 </div>
-                <div style={{ padding: "24px", height: "30%" }}>
+                <div style={{ padding: "24px" }}>
                   <h2 style={{ 
                     fontSize: "24px", 
                     fontWeight: "bold", 
@@ -241,6 +238,7 @@ const OnboardingPage = ({ onComplete }) => {
           fontSize: "18px",
           fontWeight: "bold",
           display: "flex",
+          
           alignItems: "center",
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
           cursor: "pointer"
