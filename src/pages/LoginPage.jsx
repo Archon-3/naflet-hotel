@@ -27,7 +27,7 @@ const LoginPage = () => {
     setTimeout(() => {
       setIsLoading(false);
       console.log("User logged in with:", formData);
-      navigate("/dashboard");
+      navigate("/HomePage");
     }, 1500);
   };
 
