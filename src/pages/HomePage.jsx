@@ -60,7 +60,7 @@ const HomePage = () => {
             top: '80px',
             right: '24px',
             backgroundColor: '#1a1b1e',
-            border: '1px solid #4F46E5',
+            border: '1px solid rgba(79, 70, 229, 1)', // Corrected color format
             borderRadius: '12px',
             padding: '8px',
             width: '250px',
@@ -106,7 +106,7 @@ const HomePage = () => {
       {/* Header */}
       <header style={{
         backgroundColor: "#1a1b1e",
-        borderBottom: "1px solid #4F46E5",
+        borderBottom: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
         position: "sticky",
         top: 0,
         zIndex: 50,
@@ -121,7 +121,7 @@ const HomePage = () => {
         }}>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            style={{ color: "#4F46E5", fontSize: "28px", fontWeight: "bold" }}
+            style={{ color: "rgba(79, 70, 229, 1)", fontSize: "28px", fontWeight: "bold" }} // Corrected color format
           >
             Naflet Hotel
           </motion.div>
@@ -139,7 +139,7 @@ const HomePage = () => {
               {["Home", "Rooms", "Experience", "Gallery", "Contact"].map((item) => (
                 <motion.a
                   key={item}
-                  whileHover={{ color: "#4F46E5", scale: 1.1 }}
+                  whileHover={{ color: "rgba(79, 70, 229, 1)", scale: 1.1 }} // Corrected color format
                   style={{
                     color: "white",
                     textDecoration: "none",
@@ -156,7 +156,7 @@ const HomePage = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               style={{
-                backgroundColor: "#4F46E5",
+                backgroundColor: "rgba(79, 70, 229, 1)", // Corrected color format
                 color: "white",
                 padding: "12px 24px",
                 borderRadius: "8px",
@@ -174,7 +174,7 @@ const HomePage = () => {
               onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
               style={{
                 backgroundColor: 'transparent',
-                border: '1px solid #4F46E5',
+                border: '1px solid rgba(79, 70, 229, 1)', // Corrected color format
                 borderRadius: '50%',
                 width: '40px',
                 height: '40px',
@@ -242,7 +242,7 @@ const HomePage = () => {
               whileHover={{ scale: 1.02 }}
               style={{
                 backgroundColor: "#1a1b1e",
-                border: "1px solid #4F46E5",
+                border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
                 borderRadius: "16px",
                 padding: "24px",
                 display: "flex",
@@ -263,7 +263,7 @@ const HomePage = () => {
                     width: "100%",
                     padding: "8px",
                     backgroundColor: "#2D3748",
-                    border: "1px solid #4F46E5",
+                    border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
                     borderRadius: "8px",
                     color: "white",
                   }}
@@ -279,7 +279,7 @@ const HomePage = () => {
                     width: "100%",
                     padding: "8px",
                     backgroundColor: "#2D3748",
-                    border: "1px solid #4F46E5",
+                    border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
                     borderRadius: "8px",
                     color: "white",
                   }}
@@ -294,7 +294,7 @@ const HomePage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
-                  backgroundColor: "#4F46E5",
+                  backgroundColor: "rgba(79, 70, 229, 1)", // Corrected color format
                   color: "white",
                   padding: "12px 32px",
                   borderRadius: "8px",
@@ -370,7 +370,7 @@ const HomePage = () => {
                 backgroundColor: "#1a1b1e",
                 borderRadius: "16px",
                 overflow: "hidden",
-                border: "1px solid #4F46E5",
+                border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
               }}
             >
               <div style={{
@@ -385,7 +385,7 @@ const HomePage = () => {
                   marginBottom: "16px",
                 }}>
                   <h3 style={{ color: "white", fontSize: "24px" }}>{room.name}</h3>
-                  <div style={{ color: "#4F46E5", fontSize: "20px", fontWeight: "bold" }}>
+                  <div style={{ color: "rgba(79, 70, 229, 1)", fontSize: "20px", fontWeight: "bold" }}>
                     {room.price}
                   </div>
                 </div>
@@ -394,7 +394,7 @@ const HomePage = () => {
                   alignItems: "center",
                   color: "#9CA3AF",
                 }}>
-                  <Star size={16} style={{ color: "#4F46E5", marginRight: "8px" }}/>
+                  <Star size={16} style={{ color: "rgba(79, 70, 229, 1)", marginRight: "8px" }} />
                   {room.rating} Rating
                 </div>
               </div>
