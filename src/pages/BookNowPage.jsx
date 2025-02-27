@@ -9,19 +9,25 @@ const BookNowPage = ({ onClose }) => {
   const [passwordConfirmed, setPasswordConfirmed] = useState('');
   const [isBookingComplete, setIsBookingComplete] = useState(false);
 
+  const rooms = [
+    { type: 'Single Room', price: '1500 ETB' },
+    { type: 'Double Room', price: '2500 ETB' },
+    { type: 'Suite', price: '5000 ETB' }
+  ];
+
   const handleRoomSelection = (room) => {
     setSelectedRoom(room);
-    setStep(2); // Move to payment method selection
+    setStep(2);
   };
 
   const handlePaymentSelection = (method) => {
     setPaymentMethod(method);
-    setStep(3); // Move to password confirmation
+    setStep(3);
   };
 
   const handlePasswordSubmit = () => {
     if (password === passwordConfirmed) {
-      setStep(4); // Move to booking confirmation
+      setStep(4);
     } else {
       alert('Passwords do not match!');
     }
@@ -30,7 +36,7 @@ const BookNowPage = ({ onClose }) => {
   const handleConfirmBooking = () => {
     alert('Your booking is confirmed!');
     setIsBookingComplete(true);
-    setStep(5); // Complete the booking process
+    setStep(5);
   };
 
   return (
@@ -73,30 +79,23 @@ const BookNowPage = ({ onClose }) => {
 
         {step === 1 && (
           <div>
-            <div>
-              <button
-                onClick={() => handleRoomSelection('Single Room')}
-                style={buttonStyle}
-              >
-                Single Room
-              </button>
-            </div>
-            <div>
-              <button
-                onClick={() => handleRoomSelection('Double Room')}
-                style={buttonStyle}
-              >
-                Double Room
-              </button>
-            </div>
-            <div>
-              <button
-                onClick={() => handleRoomSelection('Suite')}
-                style={buttonStyle}
-              >
-                Suite
-              </button>
-            </div>
+            {rooms.map((room) => (
+              <div key={room.type} style={{ marginBottom: '16px' }}>
+                <button
+                  onClick={() => handleRoomSelection(room)}
+                  style={{
+                    ...buttonStyle,
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '100%',
+                  }}
+                >
+                  <span>{room.type}</span>
+                  <span>{room.price}</span>
+                </button>
+              </div>
+            ))}
           </div>
         )}
 
@@ -104,26 +103,26 @@ const BookNowPage = ({ onClose }) => {
           <div>
             <div>
               <button
-                onClick={() => handlePaymentSelection('Credit Card')}
+                onClick={() => handlePaymentSelection('Tele Birr')}
                 style={buttonStyle}
               >
-                Credit Card
+                Tele Birr
               </button>
             </div>
             <div>
               <button
-                onClick={() => handlePaymentSelection('PayPal')}
+                onClick={() => handlePaymentSelection('M-PESA')}
                 style={buttonStyle}
               >
-                PayPal
+                M-PESA
               </button>
             </div>
             <div>
               <button
-                onClick={() => handlePaymentSelection('Bank Transfer')}
+                onClick={() => handlePaymentSelection('CBE')}
                 style={buttonStyle}
               >
-                Bank Transfer
+                CBE
               </button>
             </div>
           </div>
@@ -168,7 +167,10 @@ const BookNowPage = ({ onClose }) => {
         {step === 4 && (
           <div>
             <h3 style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
-              Room: {selectedRoom}
+              Room: {selectedRoom.type}
+            </h3>
+            <h3 style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
+              Price: {selectedRoom.price}
             </h3>
             <h3 style={{ color: '#E5E7EB', textAlign: 'center', marginBottom: '16px' }}>
               Payment Method: {paymentMethod}
@@ -183,7 +185,7 @@ const BookNowPage = ({ onClose }) => {
           </div>
         )}
 
-        {step === 5 && !isBookingComplete && (
+        {step === 5 && (
           <div>
             <h3 style={{ color: '#E5E7EB', textAlign: 'center' }}>
               Thank you! Your booking is confirmed.
