@@ -5,6 +5,8 @@ import OnboardingPage from './pages/OnboardingPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import Rooms from './pages/Rooms';
+import ExperiencePage from './pages/espir';     // Added import
+import BookNow from './pages/BookNowPage';      // Added import
 
 const App = () => {
   const [hasSeenOnboarding, setHasSeenOnboarding] = useState(() => {
@@ -33,6 +35,8 @@ const App = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/HomePage" element={<HomePage/>}/>
         <Route path="/Rooms" element={<Rooms/>}/>
+        <Route path="/espir" element={<ExperiencePage/>}/>
+        <Route path="/BookNowPage" element={<BookNow/>}/>
       </Routes>
     </BrowserRouter>
   );

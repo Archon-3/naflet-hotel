@@ -60,7 +60,7 @@ const HomePage = () => {
             top: '80px',
             right: '24px',
             backgroundColor: '#1a1b1e',
-            border: '1px solid rgba(79, 70, 229, 1)', // Corrected color format
+            border: '1px solid rgb(79, 70, 229)', // Corrected color format
             borderRadius: '12px',
             padding: '8px',
             width: '250px',
@@ -77,7 +77,8 @@ const HomePage = () => {
           {menuItems.map((item, index) => (
             <motion.button
               key={index}
-              whileHover={{ backgroundColor: '#2D3748' }}
+              initial={{backgroundColor: 'teansparent'}}
+              whileHover={{ backgroundColor: 'rgb(45, 55, 72' }}
               style={{
                 width: '100%',
                 padding: '12px 16px',
@@ -86,7 +87,7 @@ const HomePage = () => {
                 gap: '12px',
                 backgroundColor: 'transparent',
                 border: 'none',
-                color: index === menuItems.length - 1 ? '#EF4444' : 'white',
+                color: index === menuItems.length - 1 ? 'rgb(239, 68, 68)' : 'rgb(255, 255, 255)',
                 cursor: 'pointer',
                 borderRadius: '8px',
               }}
@@ -106,7 +107,7 @@ const HomePage = () => {
       {/* Header */}
       <header style={{
         backgroundColor: "#1a1b1e",
-        borderBottom: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
+        borderBottom: "1px solid rgb(79, 70, 229)", // Corrected color format
         position: "sticky",
         top: 0,
         zIndex: 50,
@@ -121,7 +122,7 @@ const HomePage = () => {
         }}>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            style={{ color: "rgba(79, 70, 229, 1)", fontSize: "28px", fontWeight: "bold" }} // Corrected color format
+            style={{ color: "rgb(79, 70, 229)", fontSize: "28px", fontWeight: "bold" }} // Corrected color format
           >
             Naflet Hotel
           </motion.div>
@@ -139,7 +140,8 @@ const HomePage = () => {
               {["Home", "Rooms", "Experience", "Gallery", "Contact"].map((item) => (
                 <motion.a
                   key={item}
-                  whileHover={{ color: "rgba(79, 70, 229, 1)", scale: 1.1 }} // Corrected color format
+                  initial={{Color: 'rgb(255, 255, 255'}}
+                  whileHover={{ color: "rgb(79, 70, 229)", scale: 1.1 }} // Corrected color format
                   style={{
                     color: "white",
                     textDecoration: "none",
@@ -156,7 +158,7 @@ const HomePage = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               style={{
-                backgroundColor: "rgba(79, 70, 229, 1)", // Corrected color format
+                backgroundColor: "rgb(79, 70, 229)", // Corrected color format
                 color: "white",
                 padding: "12px 24px",
                 borderRadius: "8px",
@@ -174,7 +176,7 @@ const HomePage = () => {
               onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
               style={{
                 backgroundColor: 'transparent',
-                border: '1px solid rgba(79, 70, 229, 1)', // Corrected color format
+                border: '1px solid rgb(79, 70, 229)', // Corrected color format
                 borderRadius: '50%',
                 width: '40px',
                 height: '40px',
@@ -242,7 +244,7 @@ const HomePage = () => {
               whileHover={{ scale: 1.02 }}
               style={{
                 backgroundColor: "#1a1b1e",
-                border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
+                border: "1px solid rgb(79, 70, 229)", // Corrected color format
                 borderRadius: "16px",
                 padding: "24px",
                 display: "flex",
@@ -263,7 +265,7 @@ const HomePage = () => {
                     width: "100%",
                     padding: "8px",
                     backgroundColor: "#2D3748",
-                    border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
+                    border: "1px solid rgb(79, 70, 229)", // Corrected color format
                     borderRadius: "8px",
                     color: "white",
                   }}
@@ -279,7 +281,7 @@ const HomePage = () => {
                     width: "100%",
                     padding: "8px",
                     backgroundColor: "#2D3748",
-                    border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
+                    border: "1px solid rgb(79, 70, 229)", // Corrected color format
                     borderRadius: "8px",
                     color: "white",
                   }}
@@ -294,7 +296,7 @@ const HomePage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
-                  backgroundColor: "rgba(79, 70, 229, 1)", // Corrected color format
+                  backgroundColor: "rgb(79, 70, 229)", // Corrected color format
                   color: "white",
                   padding: "12px 32px",
                   borderRadius: "8px",
@@ -327,7 +329,7 @@ const HomePage = () => {
               bottom: "24px",
               left: "24px",
               right: "24px",
-              backgroundColor: "rgba(26, 27, 30, 0.8)",
+              backgroundColor: "rgb(26, 27, 30)",
               padding: "16px",
               borderRadius: "12px",
               backdropFilter: "blur(8px)",
@@ -370,7 +372,7 @@ const HomePage = () => {
                 backgroundColor: "#1a1b1e",
                 borderRadius: "16px",
                 overflow: "hidden",
-                border: "1px solid rgba(79, 70, 229, 1)", // Corrected color format
+                border: "1px solid rgb(79, 70, 229)", // Corrected color format
               }}
             >
               <div style={{
@@ -385,7 +387,7 @@ const HomePage = () => {
                   marginBottom: "16px",
                 }}>
                   <h3 style={{ color: "white", fontSize: "24px" }}>{room.name}</h3>
-                  <div style={{ color: "rgba(79, 70, 229, 1)", fontSize: "20px", fontWeight: "bold" }}>
+                  <div style={{ color: "rgba(79, 70, 229)", fontSize: "20px", fontWeight: "bold" }}>
                     {room.price}
                   </div>
                 </div>
@@ -394,7 +396,7 @@ const HomePage = () => {
                   alignItems: "center",
                   color: "#9CA3AF",
                 }}>
-                  <Star size={16} style={{ color: "rgba(79, 70, 229, 1)", marginRight: "8px" }} />
+                  <Star size={16} style={{ color: "rgb(79, 70, 229)", marginRight: "8px" }} />
                   {room.rating} Rating
                 </div>
               </div>

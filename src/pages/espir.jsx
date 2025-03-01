@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, MapPin, Users, Clock, Coffee, Wifi, Dumbbell, Pool, Utensils } from 'lucide-react';
+import { Star, MapPin, Users, Clock, Coffee, Wifi, Dumbbell, Waves, Utensils } from 'lucide-react';
 
 const ExperiencePage = () => {
   const experiences = [
@@ -13,7 +13,7 @@ const ExperiencePage = () => {
     {
       title: "Infinity Pool",
       description: "Swim with a breathtaking view of the city skyline",
-      icon: <Pool size={24} />,
+      icon: <Waves size={24} />,
       details: "6 AM - 10 PM",
     },
     {
@@ -238,4 +238,4 @@ const ExperiencePage = () => {
   );
 };
 
-export default espir;
+export default ExperiencePage;
