@@ -60,7 +60,7 @@ const HomePage = () => {
             top: '80px',
             right: '24px',
             backgroundColor: '#1a1b1e',
-            border: '1px solid rgb(79, 70, 229)', // Corrected color format
+            border: '1px solid rgb(79, 70, 229)',
             borderRadius: '12px',
             padding: '8px',
             width: '250px',
@@ -71,14 +71,14 @@ const HomePage = () => {
             padding: '16px',
             borderBottom: '1px solid #2D3748',
           }}>
-            <div style={{ color: 'white', fontWeight: 'bold' }}>John Doe</div>
+            <div style={{ color: 'rgb(255, 255, 255)', fontWeight: 'bold' }}>John Doe</div>
             <div style={{ color: '#9CA3AF', fontSize: '14px' }}>john.doe@example.com</div>
           </div>
           {menuItems.map((item, index) => (
             <motion.button
               key={index}
-              initial={{backgroundColor: 'teansparent'}}
-              whileHover={{ backgroundColor: 'rgb(45, 55, 72' }}
+              initial={{ backgroundColor: 'transparent' }}
+              whileHover={{ backgroundColor: 'rgb(45, 55, 72)' }}
               style={{
                 width: '100%',
                 padding: '12px 16px',
@@ -107,7 +107,7 @@ const HomePage = () => {
       {/* Header */}
       <header style={{
         backgroundColor: "#1a1b1e",
-        borderBottom: "1px solid rgb(79, 70, 229)", // Corrected color format
+        borderBottom: "1px solid rgb(79, 70, 229)",
         position: "sticky",
         top: 0,
         zIndex: 50,
@@ -122,7 +122,7 @@ const HomePage = () => {
         }}>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            style={{ color: "rgb(79, 70, 229)", fontSize: "28px", fontWeight: "bold" }} // Corrected color format
+            style={{ color: "rgb(79, 70, 229)", fontSize: "28px", fontWeight: "bold" }}
           >
             Naflet Hotel
           </motion.div>
@@ -137,20 +137,40 @@ const HomePage = () => {
               gap: "40px",
               alignItems: "center",
             }}>
-              {["Home", "Rooms", "Experience", "Gallery", "Contact"].map((item) => (
+              {[
+                { name: "Home", href: "#" },
+                { name: "Rooms", href: "/Rooms" },
+                { name: "Experience", href: "#" },
+                { name: "Gallery", href: "#" },
+                { name: "Contact", href: "#" }
+              ].map((item) => (
                 <motion.a
-                  key={item}
-                  initial={{Color: 'rgb(255, 255, 255'}}
-                  whileHover={{ color: "rgb(79, 70, 229)", scale: 1.1 }} // Corrected color format
+                  key={item.name}
+                  initial={{ color: 'rgb(255, 255, 255)' }}
+                  whileHover={{ color: "rgb(79, 70, 229)", scale: 1.1 }}
                   style={{
-                    color: "white",
+                    color: "rgb(255, 255, 255)",
                     textDecoration: "none",
                     fontSize: "16px",
                     fontWeight: "500",
                   }}
-                  href="#"
+                  href={item.href}
+                  onClick={(e) => {
+                    if (item.name === "Rooms") {
+                      e.preventDefault();
+                      console.log("Navigating to Rooms page");
+                      
+                      // In a real app with routing, you might use:
+                      // history.push('/rooms');
+                      // or
+                      // navigate('/rooms');
+                      
+                      // For demonstration, we'll show an alert:
+                      alert("Navigating to Rooms page");
+                    }
+                  }}
                 >
-                  {item}
+                  {item.name}
                 </motion.a>
               ))}
             </nav>
@@ -158,8 +178,8 @@ const HomePage = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               style={{
-                backgroundColor: "rgb(79, 70, 229)", // Corrected color format
-                color: "white",
+                backgroundColor: "rgb(79, 70, 229)",
+                color: "rgb(255, 255, 255)",
                 padding: "12px 24px",
                 borderRadius: "8px",
                 border: "none",
@@ -176,7 +196,7 @@ const HomePage = () => {
               onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
               style={{
                 backgroundColor: 'transparent',
-                border: '1px solid rgb(79, 70, 229)', // Corrected color format
+                border: '1px solid rgb(79, 70, 229)',
                 borderRadius: '50%',
                 width: '40px',
                 height: '40px',
@@ -184,7 +204,7 @@ const HomePage = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                color: 'white',
+                color: 'rgb(255, 255, 255)',
               }}
             >
               <Menu size={24} />
@@ -223,7 +243,7 @@ const HomePage = () => {
           >
             <h1 style={{
               fontSize: "64px",
-              color: "white",
+              color: "rgb(255, 255, 255)",
               marginBottom: "24px",
               lineHeight: "1.1",
               fontWeight: "bold",
@@ -244,7 +264,7 @@ const HomePage = () => {
               whileHover={{ scale: 1.02 }}
               style={{
                 backgroundColor: "#1a1b1e",
-                border: "1px solid rgb(79, 70, 229)", // Corrected color format
+                border: "1px solid rgb(79, 70, 229)",
                 borderRadius: "16px",
                 padding: "24px",
                 display: "flex",
@@ -265,9 +285,9 @@ const HomePage = () => {
                     width: "100%",
                     padding: "8px",
                     backgroundColor: "#2D3748",
-                    border: "1px solid rgb(79, 70, 229)", // Corrected color format
+                    border: "1px solid rgb(79, 70, 229)",
                     borderRadius: "8px",
-                    color: "white",
+                    color: "rgb(255, 255, 255)",
                   }}
                 />
               </div>
@@ -281,9 +301,9 @@ const HomePage = () => {
                     width: "100%",
                     padding: "8px",
                     backgroundColor: "#2D3748",
-                    border: "1px solid rgb(79, 70, 229)", // Corrected color format
+                    border: "1px solid rgb(79, 70, 229)",
                     borderRadius: "8px",
-                    color: "white",
+                    color: "rgb(255, 255, 255)",
                   }}
                 >
                   <option>1 Guest</option>
@@ -296,8 +316,8 @@ const HomePage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 style={{
-                  backgroundColor: "rgb(79, 70, 229)", // Corrected color format
-                  color: "white",
+                  backgroundColor: "rgb(79, 70, 229)",
+                  color: "rgb(255, 255, 255)",
                   padding: "12px 32px",
                   borderRadius: "8px",
                   border: "none",
@@ -334,7 +354,7 @@ const HomePage = () => {
               borderRadius: "12px",
               backdropFilter: "blur(8px)",
             }}>
-              <div style={{ color: "white", fontSize: "20px", fontWeight: "bold", marginBottom: "8px" }}>
+              <div style={{ color: "rgb(255, 255, 255)", fontSize: "20px", fontWeight: "bold", marginBottom: "8px" }}>
                 Virtual Tour Available
               </div>
               <div style={{ color: "#9CA3AF" }}>
@@ -353,7 +373,7 @@ const HomePage = () => {
       }}>
         <h2 style={{
           fontSize: "36px",
-          color: "white",
+          color: "rgb(255, 255, 255)",
           marginBottom: "48px",
           textAlign: "center",
         }}>
@@ -372,7 +392,7 @@ const HomePage = () => {
                 backgroundColor: "#1a1b1e",
                 borderRadius: "16px",
                 overflow: "hidden",
-                border: "1px solid rgb(79, 70, 229)", // Corrected color format
+                border: "1px solid rgb(79, 70, 229)",
               }}
             >
               <div style={{
@@ -386,8 +406,8 @@ const HomePage = () => {
                   alignItems: "center",
                   marginBottom: "16px",
                 }}>
-                  <h3 style={{ color: "white", fontSize: "24px" }}>{room.name}</h3>
-                  <div style={{ color: "rgba(79, 70, 229)", fontSize: "20px", fontWeight: "bold" }}>
+                  <h3 style={{ color: "rgb(255, 255, 255)", fontSize: "24px" }}>{room.name}</h3>
+                  <div style={{ color: "rgb(79, 70, 229)", fontSize: "20px", fontWeight: "bold" }}>
                     {room.price}
                   </div>
                 </div>
