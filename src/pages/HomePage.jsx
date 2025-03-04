@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { 
   Menu, 
   Search, 
@@ -17,6 +18,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const HomePage = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -46,6 +48,12 @@ const HomePage = () => {
     { icon: <HelpCircle size={20} />, label: 'Help', action: () => console.log('Help clicked') },
     { icon: <LogOut size={20} />, label: 'Logout', action: () => console.log('Logout clicked') },
   ];
+
+  // Navigation handler function
+  const handleNavigation = (path, pageName) => {
+    console.log(`Navigating to ${pageName} page`);
+    navigate(path);
+  };
 
   // Profile Menu Component
   const ProfileMenu = () => (
@@ -138,36 +146,26 @@ const HomePage = () => {
               alignItems: "center",
             }}>
               {[
-                { name: "Home", href: "#" },
-                { name: "Rooms", href: "/Rooms" },
-                { name: "Experience", href: "#" },
-                { name: "Gallery", href: "#" },
-                { name: "Contact", href: "#" }
+                { name: "Home", path: "/HomePage" },
+                { name: "Rooms", path: "/Rooms" },
+                { name: "Experience", path: "/Experience" },
+                { name: "Gallery", path: "/Gallery" },
+                { name: "Contact", path: "/Contact" }
               ].map((item) => (
                 <motion.a
                   key={item.name}
                   initial={{ color: 'rgb(255, 255, 255)' }}
                   whileHover={{ color: "rgb(79, 70, 229)", scale: 1.1 }}
                   style={{
-                    color: "rgb(255, 255, 255)",
+                    color: item.name === "Home" ? "rgb(79, 70, 229)" : "rgb(255, 255, 255)",
                     textDecoration: "none",
                     fontSize: "16px",
                     fontWeight: "500",
                   }}
-                  href={item.href}
+                  href="#"
                   onClick={(e) => {
-                    if (item.name === "Rooms") {
-                      e.preventDefault();
-                      console.log("Navigating to Rooms page");
-                      
-                      // In a real app with routing, you might use:
-                      // history.push('/rooms');
-                      // or
-                      // navigate('/rooms');
-                      
-                      // For demonstration, we'll show an alert:
-                      alert("Navigating to Rooms page");
-                    }
+                    e.preventDefault();
+                    handleNavigation(item.path, item.name);
                   }}
                 >
                   {item.name}
@@ -186,6 +184,7 @@ const HomePage = () => {
                 cursor: "pointer",
                 fontWeight: "bold",
               }}
+              onClick={() => handleNavigation("/BookNowPage", "Book Now")}
             >
               Book Now
             </motion.button>
@@ -325,6 +324,7 @@ const HomePage = () => {
                   fontWeight: "bold",
                   alignSelf: "flex-end",
                 }}
+                onClick={() => handleNavigation("/Rooms", "Rooms")}
               >
                 Search Rooms
               </motion.button>
@@ -393,7 +393,9 @@ const HomePage = () => {
                 borderRadius: "16px",
                 overflow: "hidden",
                 border: "1px solid rgb(79, 70, 229)",
+                cursor: "pointer",
               }}
+              onClick={() => handleNavigation("/Rooms", "Rooms")}
             >
               <div style={{
                 height: "200px",

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Menu, 
   Search, 
@@ -19,11 +20,18 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const GalleryPage = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  
+  // Navigation handler function
+  const handleNavigation = (path, pageName) => {
+    console.log(`Navigating to ${pageName} page`);
+    navigate(path);
+  };
   
   // Gallery categories
   const categories = [
@@ -317,7 +325,8 @@ const GalleryPage = () => {
         }}>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            style={{ color: "rgb(79, 70, 229)", fontSize: "28px", fontWeight: "bold" }}
+            style={{ color: "rgb(79, 70, 229)", fontSize: "28px", fontWeight: "bold", cursor: 'pointer' }}
+            onClick={() => handleNavigation("/HomePage", "Home")}
           >
             Naflet Hotel
           </motion.div>
@@ -333,11 +342,11 @@ const GalleryPage = () => {
               alignItems: "center",
             }}>
               {[
-                { name: "Home", href: "/" },
-                { name: "Rooms", href: "/Rooms" },
-                { name: "Experience", href: "#" },
-                { name: "Gallery", href: "/Gallery" },
-                { name: "Contact", href: "#" }
+                { name: "Home", path: "/HomePage" },
+                { name: "Rooms", path: "/Rooms" },
+                { name: "Experience", path: "/Experience" },
+                { name: "Gallery", path: "/Gallery" },
+                { name: "Contact", path: "/Contact" }
               ].map((item) => (
                 <motion.a
                   key={item.name}
@@ -349,7 +358,11 @@ const GalleryPage = () => {
                     fontSize: "16px",
                     fontWeight: "500",
                   }}
-                  href={item.href}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(item.path, item.name);
+                  }}
                 >
                   {item.name}
                 </motion.a>
@@ -367,6 +380,7 @@ const GalleryPage = () => {
                 cursor: "pointer",
                 fontWeight: "bold",
               }}
+              onClick={() => handleNavigation("/BookNowPage", "Book Now")}
             >
               Book Now
             </motion.button>
@@ -551,7 +565,6 @@ const GalleryPage = () => {
 
       {/* Image Modal */}
       <ImageModal />
-
     </div>
   );
 };
