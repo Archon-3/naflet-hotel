@@ -34,10 +34,34 @@ const HomePage = () => {
     return date.toISOString().split('T')[0];
   };
 
+  // Updated rooms data to match the RoomsPage
   const rooms = [
-    { id: 1, name: "Luxury Suite", price: "$299/night", rating: 4.8 },
-    { id: 2, name: "Ocean View", price: "$399/night", rating: 4.9 },
-    { id: 3, name: "Presidential Suite", price: "$599/night", rating: 5.0 },
+    { 
+      id: 1,
+      name: "Family Room",
+      price: "$220/night",
+      image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
+      description: 'Spacious air-conditioned room with separate sitting room incorporating king size bed',
+      rating: 4.9,
+      popular: true
+    },
+    { 
+      id: 2,
+      name: "Executive Room",
+      price: "$160/night",
+      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80',
+      description: 'Elegant room designed for business travelers with work desk and premium features',
+      rating: 4.8,
+      popular: true
+    },
+    { 
+      id: 3,
+      name: "Royal Room",
+      price: "$110/night",
+      image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      description: 'Spacious room incorporating king size bed, sunrise and sunset view',
+      rating: 4.7
+    }
   ];
 
   const menuItems = [
@@ -331,6 +355,7 @@ const HomePage = () => {
             </motion.div>
           </motion.div>
 
+          {/* Hero image - Updated with a beautiful hotel image */}
           <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -338,18 +363,25 @@ const HomePage = () => {
             style={{
               width: "500px",
               height: "500px",
-              backgroundColor: "#2D3748",
               borderRadius: "16px",
               position: "relative",
               overflow: "hidden",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.6)"
             }}
           >
+            <div style={{
+              width: "100%",
+              height: "100%",
+              backgroundImage: "url('https://lh3.googleusercontent.com/p/AF1QipMKmxytkBoSFdtDHHtLr62rYhszKjWsCGjwIoNd=s1360-w1360-h1020')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}></div>
             <div style={{
               position: "absolute",
               bottom: "24px",
               left: "24px",
               right: "24px",
-              backgroundColor: "rgb(26, 27, 30)",
+              backgroundColor: "rgba(26, 27, 30, 0.8)",
               padding: "16px",
               borderRadius: "12px",
               backdropFilter: "blur(8px)",
@@ -365,7 +397,7 @@ const HomePage = () => {
         </div>
       </motion.section>
 
-      {/* Featured Rooms Section remains the same */}
+      {/* Featured Rooms Section - Updated with real images */}
       <section style={{
         maxWidth: "1400px",
         margin: "0 auto",
@@ -394,13 +426,33 @@ const HomePage = () => {
                 overflow: "hidden",
                 border: "1px solid rgb(79, 70, 229)",
                 cursor: "pointer",
+                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)",
               }}
               onClick={() => handleNavigation("/Rooms", "Rooms")}
             >
               <div style={{
                 height: "200px",
-                backgroundColor: "#2D3748",
-              }}/>
+                backgroundImage: `url(${room.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                position: "relative",
+              }}>
+                {room.popular && (
+                  <div style={{
+                    position: "absolute",
+                    top: "16px",
+                    right: "16px",
+                    backgroundColor: "rgb(79, 70, 229)",
+                    padding: "4px 12px",
+                    borderRadius: "9999px",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    color: "white",
+                  }}>
+                    Popular
+                  </div>
+                )}
+              </div>
               <div style={{ padding: "24px" }}>
                 <div style={{
                   display: "flex",
@@ -413,19 +465,280 @@ const HomePage = () => {
                     {room.price}
                   </div>
                 </div>
+                <p style={{ 
+                  color: "#9CA3AF", 
+                  marginBottom: "12px", 
+                  fontSize: "14px", 
+                  minHeight: "42px" 
+                }}>
+                  {room.description}
+                </p>
                 <div style={{
                   display: "flex",
                   alignItems: "center",
                   color: "#9CA3AF",
                 }}>
-                  <Star size={16} style={{ color: "rgb(79, 70, 229)", marginRight: "8px" }} />
+                  <Star size={16} style={{ color: "#F59E0B", fill: "#F59E0B", marginRight: "8px" }} />
                   {room.rating} Rating
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+        
+        <div style={{ 
+          display: "flex", 
+          justifyContent: "center", 
+          marginTop: "48px" 
+        }}>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              backgroundColor: "transparent",
+              color: "rgb(255, 255, 255)",
+              border: "1px solid rgb(79, 70, 229)",
+              padding: "12px 24px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              fontWeight: "bold",
+            }}
+            onClick={() => handleNavigation("/Rooms", "Rooms")}
+          >
+            View All Rooms <ChevronRight size={20} />
+          </motion.button>
+        </div>
       </section>
+
+      {/* New Section: Hotel Amenities */}
+      <section style={{
+        backgroundColor: "#1a1b1e",
+        padding: "80px 24px",
+      }}>
+        <div style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+        }}>
+          <h2 style={{
+            fontSize: "36px",
+            color: "rgb(255, 255, 255)",
+            marginBottom: "48px",
+            textAlign: "center",
+          }}>
+            Exceptional Amenities
+          </h2>
+          
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "32px",
+          }}>
+            {[
+              { 
+                icon: "🍽️", 
+                title: "Fine Dining", 
+                description: "Experience culinary excellence with our world-class restaurants offering local and international cuisine." 
+              },
+              { 
+                icon: "🏊", 
+                title: "Infinity Pool", 
+                description: "Relax in our stunning infinity pool with panoramic views of the surrounding landscape." 
+              },
+              { 
+                icon: "💆", 
+                title: "Luxury Spa", 
+                description: "Rejuvenate your body and mind with our premium spa treatments and wellness services." 
+              },
+              { 
+                icon: "🏋️", 
+                title: "Fitness Center", 
+                description: "Stay active in our state-of-the-art fitness center featuring the latest equipment." 
+              },
+            ].map((amenity, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -10 }}
+                style={{
+                  backgroundColor: "#2D3748",
+                  borderRadius: "16px",
+                  padding: "32px 24px",
+                  textAlign: "center",
+                }}
+              >
+                <div style={{ 
+                  fontSize: "48px", 
+                  marginBottom: "16px" 
+                }}>
+                  {amenity.icon}
+                </div>
+                <h3 style={{ 
+                  color: "rgb(255, 255, 255)", 
+                  fontSize: "24px", 
+                  marginBottom: "16px" 
+                }}>
+                  {amenity.title}
+                </h3>
+                <p style={{ color: "#9CA3AF" }}>
+                  {amenity.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer style={{
+        backgroundColor: "#0f172a",
+        padding: "80px 24px 40px",
+        borderTop: "1px solid #2D3748",
+      }}>
+        <div style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+        }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "48px",
+            marginBottom: "64px",
+          }}>
+            <div>
+              <div style={{ 
+                color: "rgb(79, 70, 229)", 
+                fontSize: "28px", 
+                fontWeight: "bold",
+                marginBottom: "16px",
+              }}>
+                Naflet Hotel
+              </div>
+              <p style={{ color: "#9CA3AF", lineHeight: "1.6" }}>
+                Providing exceptional hospitality and unforgettable experiences for our guests.
+              </p>
+            </div>
+            
+            <div>
+              <h4 style={{ 
+                color: "rgb(255, 255, 255)", 
+                fontSize: "18px", 
+                marginBottom: "16px",
+                fontWeight: "bold",
+              }}>Quick Links</h4>
+              <ul style={{ 
+                listStyle: "none", 
+                padding: 0, 
+                margin: 0,
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}>
+                {["Home", "Rooms", "Experience", "Gallery", "Contact"].map((item) => (
+                  <li key={item}>
+                    <a 
+                      href="#" 
+                      style={{ 
+                        color: "#9CA3AF", 
+                        textDecoration: "none",
+                        transition: "color 0.2s",
+                        display: "inline-block",
+                      }}
+                      onMouseOver={(e) => e.target.style.color = "rgb(79, 70, 229)"}
+                      onMouseOut={(e) => e.target.style.color = "#9CA3AF"}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigation(`/${item}Page`, item);
+                      }}
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h4 style={{ 
+                color: "rgb(255, 255, 255)", 
+                fontSize: "18px", 
+                marginBottom: "16px",
+                fontWeight: "bold",
+              }}>Contact</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <div style={{ color: "#9CA3AF" }}>
+                  <MapPin size={16} style={{ display: "inline", marginRight: "8px" }}/>
+                  123 Luxury Avenue, Addis Ababa, Ethiopia
+                </div>
+                <div style={{ color: "#9CA3AF" }}>
+                  📞 +251 123 456 789
+                </div>
+                <div style={{ color: "#9CA3AF" }}>
+                  ✉️ info@naflethotel.com
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 style={{ 
+                color: "rgb(255, 255, 255)", 
+                fontSize: "18px", 
+                marginBottom: "16px",
+                fontWeight: "bold",
+              }}>Newsletter</h4>
+              <p style={{ color: "#9CA3AF", marginBottom: "16px" }}>
+                Subscribe to our newsletter for special deals and updates.
+              </p>
+              <div style={{ display: "flex" }}>
+                <input 
+                  type="email" 
+                  placeholder="Your email"
+                  style={{
+                    flex: 1,
+                    padding: "12px",
+                    backgroundColor: "#2D3748",
+                    border: "none",
+                    borderRadius: "8px 0 0 8px",
+                    color: "white",
+                  }}
+                />
+                <button style={{
+                  backgroundColor: "rgb(79, 70, 229)",
+                  color: "white",
+                  border: "none",
+                  padding: "0 16px",
+                  borderRadius: "0 8px 8px 0",
+                  cursor: "pointer",
+                }}>
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div style={{
+            borderTop: "1px solid #2D3748",
+            paddingTop: "24px",
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "16px",
+          }}>
+            <div style={{ color: "#9CA3AF" }}>
+              © 2023 Naflet Hotel. All rights reserved.
+            </div>
+            <div style={{ 
+              display: "flex", 
+              gap: "24px",
+              color: "#9CA3AF",
+            }}>
+              <a href="#" style={{ color: "#9CA3AF", textDecoration: "none" }}>Privacy Policy</a>
+              <a href="#" style={{ color: "#9CA3AF", textDecoration: "none" }}>Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

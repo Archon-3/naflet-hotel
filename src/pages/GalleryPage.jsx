@@ -15,7 +15,8 @@ import {
   CreditCard,
   HelpCircle,
   Filter,
-  X
+  X,
+  Image
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -26,6 +27,7 @@ const GalleryPage = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [imageLoadError, setImageLoadError] = useState({});
   
   // Navigation handler function
   const handleNavigation = (path, pageName) => {
@@ -42,94 +44,126 @@ const GalleryPage = () => {
     { id: 'exterior', name: 'Exterior' }
   ];
   
-  // Gallery images data
-  // In a real application, these would have actual image URLs
+  // Gallery images data with fully qualified and reliable URLs from image hosts allowed by CSP
   const galleryImages = [
     { 
       id: 1, 
       category: 'rooms', 
       title: 'Luxury Suite', 
-      description: 'Experience unmatched comfort in our premium suites',
-      color: '#264653' // placeholder color for demo
+      description: 'Experience unmatched comfort in our premium suites with elegant design and plush bedding',
+      image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 2, 
       category: 'rooms', 
-      title: 'Ocean View Room', 
-      description: 'Wake up to breathtaking ocean views',
-      color: '#2a9d8f' 
+      title: 'Executive Room', 
+      description: 'Contemporary design with modern wood accents and premium fixtures for the discerning traveler',
+      image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 3, 
-      category: 'amenities', 
-      title: 'Infinity Pool', 
-      description: 'Relax in our stunning infinity pool overlooking the ocean',
-      color: '#e9c46a' 
+      category: 'rooms', 
+      title: 'Deluxe Room', 
+      description: 'Stylish comfort with a king-size bed and elegant décor for a relaxing and enjoyable stay',
+      image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 4, 
-      category: 'amenities', 
-      title: 'Spa Treatment Room', 
-      description: 'Rejuvenate your senses in our luxury spa',
-      color: '#f4a261' 
+      category: 'rooms', 
+      title: 'Presidential Suite', 
+      description: 'Our most exclusive accommodation featuring a spacious layout and premium amenities',
+      image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 5, 
-      category: 'dining', 
-      title: 'Seaside Restaurant', 
-      description: 'Fine dining with a perfect view',
-      color: '#e76f51' 
+      category: 'amenities', 
+      title: 'Swimming Pool', 
+      description: 'Relax in our stunning pool area with comfortable loungers and attentive service',
+      image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 6, 
-      category: 'dining', 
-      title: 'Rooftop Bar', 
-      description: 'Enjoy exotic cocktails under the stars',
-      color: '#bc6c25' 
+      category: 'amenities', 
+      title: 'Spa Treatment Room', 
+      description: 'Rejuvenate your senses in our luxury spa with personalized treatments',
+      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 7, 
-      category: 'exterior', 
-      title: 'Hotel Entrance', 
-      description: 'Grand entrance with water features',
-      color: '#283618' 
+      category: 'amenities', 
+      title: 'Fitness Center', 
+      description: 'State-of-the-art equipment for maintaining your workout routine while traveling',
+      image: 'https://images.unsplash.com/photo-1571902943202-507ec2618539?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 8, 
-      category: 'exterior', 
-      title: 'Beach Access', 
-      description: 'Private pathway to the beach',
-      color: '#606c38' 
+      category: 'dining', 
+      title: 'Main Restaurant', 
+      description: 'Elegant dining space offering a diverse menu of international and Ethiopian cuisine',
+      image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 9, 
-      category: 'rooms', 
-      title: 'Presidential Suite', 
-      description: 'Our most exclusive accommodation',
-      color: '#023047' 
+      category: 'dining', 
+      title: 'Rooftop Bar', 
+      description: 'Enjoy cocktails and breathtaking views of Adama from our stylish rooftop lounge',
+      image: 'https://images.unsplash.com/photo-1560624052-3e26e6e19a2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 10, 
-      category: 'amenities', 
-      title: 'Fitness Center', 
-      description: 'State-of-the-art equipment for your workout needs',
-      color: '#219ebc' 
+      category: 'dining', 
+      title: 'Private Dining', 
+      description: 'Intimate dining spaces for special occasions and business meetings',
+      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 11, 
-      category: 'dining', 
-      title: 'Wine Cellar', 
-      description: 'Extensive collection of fine wines',
-      color: '#8ecae6' 
+      category: 'exterior', 
+      title: 'Hotel Entrance', 
+      description: 'Impressive entrance with elegant architecture welcoming our guests to Naflet Hotel Adama',
+      image: 'https://images.unsplash.com/photo-1529619768328-e37af76c6fe5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     },
     { 
       id: 12, 
       category: 'exterior', 
       title: 'Garden View', 
-      description: 'Lush tropical gardens surrounding the property',
-      color: '#fb8500' 
+      description: 'Lush landscaped gardens providing a peaceful retreat within the hotel grounds',
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
+    },
+    { 
+      id: 13, 
+      category: 'exterior', 
+      title: 'Night View', 
+      description: 'Naflet Hotel Adama illuminated at night, creating a magical atmosphere',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
+    },
+    { 
+      id: 14, 
+      category: 'amenities', 
+      title: 'Conference Room', 
+      description: 'Modern meeting facilities equipped with the latest technology for business events',
+      image: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
+    },
+    { 
+      id: 15, 
+      category: 'rooms', 
+      title: 'Twin Room', 
+      description: 'Comfortable accommodation with two separate beds, perfect for friends or colleagues',
+      image: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
+    },
+    { 
+      id: 16, 
+      category: 'dining', 
+      title: 'Breakfast Buffet', 
+      description: 'Start your day with our extensive breakfast selection featuring local and international options',
+      image: 'https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80'
     }
   ];
+  
+  // Handle image loading errors
+  const handleImageError = (id) => {
+    setImageLoadError(prev => ({...prev, [id]: true}));
+  };
   
   // Filter images based on active category
   const filteredImages = activeCategory === 'all' 
@@ -149,7 +183,6 @@ const GalleryPage = () => {
   const openModal = (image) => {
     setSelectedImage(image);
     setIsModalOpen(true);
-    // In a real app, we would prevent body scrolling here
     document.body.style.overflow = 'hidden';
   };
 
@@ -157,7 +190,6 @@ const GalleryPage = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedImage(null);
-    // Restore scrolling
     document.body.style.overflow = 'auto';
   };
 
@@ -249,23 +281,45 @@ const GalleryPage = () => {
               maxHeight: '90%',
               borderRadius: '16px',
               overflow: 'hidden',
+              backgroundColor: '#1a1b1e',
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* In a real app, this would be an actual image */}
             <div style={{
-              backgroundColor: selectedImage.color,
               width: '80vw',
-              height: '60vh',
               maxWidth: '1200px',
+              height: '60vh',
+              position: 'relative',
+              backgroundColor: '#2D3748',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'white',
-              fontSize: '24px',
-              fontWeight: 'bold',
             }}>
-              {selectedImage.title}
+              {imageLoadError[selectedImage.id] ? (
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '20px',
+                  textAlign: 'center',
+                  color: '#9CA3AF',
+                }}>
+                  <Image size={48} style={{ marginBottom: '16px', opacity: 0.5 }} />
+                  <p>Image not available</p>
+                </div>
+              ) : (
+                <img 
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    objectFit: 'contain',
+                  }}
+                  onError={() => handleImageError(selectedImage.id)}
+                />
+              )}
             </div>
             
             <motion.button
@@ -445,7 +499,7 @@ const GalleryPage = () => {
             lineHeight: "1.6",
           }}
         >
-          Explore our luxurious hotel through captivating images of our rooms, amenities, dining options, and more.
+          Explore Naflet Hotel Adama through captivating images of our rooms, amenities, dining options, and more.
         </motion.p>
       </motion.section>
 
@@ -528,18 +582,41 @@ const GalleryPage = () => {
                 }}
                 onClick={() => openModal(image)}
               >
-                {/* In a real app, this would be an actual image */}
                 <div style={{
                   height: "220px",
-                  backgroundColor: image.color,
+                  overflow: "hidden",
+                  position: "relative",
+                  backgroundColor: "#2D3748",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "rgba(255, 255, 255, 0.8)",
-                  fontSize: "20px",
-                  fontWeight: "bold",
                 }}>
-                  {image.title}
+                  {imageLoadError[image.id] ? (
+                    <div style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#9CA3AF',
+                    }}>
+                      <Image size={36} style={{ marginBottom: '8px', opacity: 0.5 }} />
+                      <p style={{ fontSize: '14px' }}>Image preview</p>
+                    </div>
+                  ) : (
+                    <img 
+                      src={image.image}
+                      alt={image.title}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        transition: "transform 0.5s ease",
+                      }}
+                      onMouseOver={(e) => e.target.style.transform = "scale(1.1)"}
+                      onMouseOut={(e) => e.target.style.transform = "scale(1)"}
+                      onError={() => handleImageError(image.id)}
+                    />
+                  )}
                 </div>
                 <div style={{ padding: "16px" }}>
                   <h3 style={{ 

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Wifi, Bath, Coffee, Tv, Users, MapPin, Star, ChevronDown, Filter, 
   BedDouble, ParkingSquare, Wine, Waves, Menu, Settings, User, 
-  LogOut, Bell, CreditCard, HelpCircle
+  LogOut, Bell, CreditCard, HelpCircle, Sunrise, Airplay, Car
 } from 'lucide-react';
 
 const RoomsPage = () => {
@@ -25,65 +25,68 @@ const RoomsPage = () => {
     { icon: <Bath size={20} />, label: 'Bathtub' },
     { icon: <Coffee size={20} />, label: 'Coffee Maker' },
     { icon: <Tv size={20} />, label: 'Smart TV' },
-    { icon: <ParkingSquare size={20} />, label: 'Free Parking' },
-    { icon: <Wine size={20} />, label: 'Mini Bar' },
-    { icon: <Waves size={20} />, label: 'Pool Access' },
+    { icon: <Car size={20} />, label: 'Airport pickup' },
+    { icon: <Airplay size={20} />, label: 'Air conditioner' },
+    { icon: <Sunrise size={20} />, label: 'Sunrise/Sunset view' },
   ];
 
+  // Updated room data based on naflethotels.com
   const rooms = [
     {
       id: 1,
       name: "Family Room",
       type: "family",
-      price: 299,
-      size: "45m²",
+      price: 220,
+      size: "250m²",
       capacity: 4,
-      rating: 4.7,
-      description: "Spacious room perfect for families with two double beds and modern amenities",
-      amenities: amenities.slice(0, 6),
-      images: ["family-1", "family-2"],
+      rating: 4.9,
+      description: "Spacious air-conditioned room with separate sitting room incorporating king size bed, Jacuzzi, sunrise and sunset view, dressing",
+      amenities: amenities,
+      image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
       popular: true
     },
     {
       id: 2,
       name: "Executive Room",
       type: "executive",
-      price: 259,
-      size: "35m²",
+      price: 160,
+      size: "200m²",
       capacity: 2,
       rating: 4.8,
-      description: "Elegant room designed for business travelers with work desk and premium features",
+      description: "Spacious air-conditioned room with separate sitting room incorporating king size bed, Jacuzzi, sunrise and sunset view, dressing",
       amenities: amenities,
-      images: ["executive-1", "executive-2"],
+      image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
       popular: true
     },
     {
       id: 3,
-      name: "Classic Twin",
-      type: "classic",
-      price: 199,
-      size: "30m²",
+      name: "Royal Room",
+      type: "royal",
+      price: 110,
+      size: "190m²",
       capacity: 2,
-      rating: 4.5,
-      description: "Comfortable room with twin beds, perfect for friends or business colleagues",
-      amenities: amenities.slice(0, 4),
-      images: ["twin-1", "twin-2"]
+      rating: 4.7,
+      description: "Spacious air-conditioned room incorporating king size bed, sunrise and sunset view, dressing table, 42\" smart TV, wardrobe, hair dryer",
+      amenities: amenities.slice(0, 5),
+      image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      popular: false
     },
     {
       id: 4,
-      name: "Classic Room",
-      type: "classic",
-      price: 189,
-      size: "28m²",
+      name: "Deluxe Room",
+      type: "deluxe",
+      price: 90,
+      size: "50m²",
       capacity: 2,
       rating: 4.6,
-      description: "Cozy room with a queen bed and essential amenities for a pleasant stay",
-      amenities: amenities.slice(0, 5),
-      images: ["classic-1", "classic-2"]
+      description: "Spacious air-conditioned room incorporating king size bed, comfortable working table with two chairs, dressing table, 42\" smart TV",
+      amenities: amenities.slice(0, 4),
+      image: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      popular: false
     }
   ];
 
-  const filters = ['all', 'classic', 'executive', 'family'];
+  const filters = ['all', 'deluxe', 'royal', 'executive', 'family'];
 
   const filteredRooms = selectedFilter === 'all' 
     ? rooms 
@@ -317,7 +320,7 @@ const RoomsPage = () => {
               <ChevronDown size={16} />
             </motion.button>
 
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               {filters.map(filter => (
                 <motion.button
                   key={filter}
@@ -430,9 +433,9 @@ const RoomsPage = () => {
                       border: "none",
                     }}>
                       <option>Any Size</option>
-                      <option>25-30m²</option>
-                      <option>30-40m²</option>
-                      <option>40m²+</option>
+                      <option>25-50m²</option>
+                      <option>50-200m²</option>
+                      <option>200m²+</option>
                     </select>
                   </div>
                 </div>
@@ -459,11 +462,13 @@ const RoomsPage = () => {
                 overflow: "hidden",
               }}
             >
-              {/* Room Image */}
+              {/* Room Image - Updated with actual image */}
               <div style={{
                 position: "relative",
                 height: "256px",
-                backgroundColor: "#4B5563",
+                backgroundImage: `url(${room.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}>
                 {room.popular && (
                   <div style={{
@@ -522,6 +527,7 @@ const RoomsPage = () => {
                   color: "#9CA3AF",
                   fontSize: "14px",
                   marginBottom: "16px",
+                  minHeight: "60px", // Ensure consistent height for descriptions
                 }}>
                   {room.description}
                 </p>
@@ -539,12 +545,22 @@ const RoomsPage = () => {
                       gap: "4px",
                       fontSize: "14px",
                       color: "#9CA3AF",
+                      backgroundColor: "rgba(45, 55, 72, 0.7)",
+                      padding: "4px 8px",
+                      borderRadius: "4px",
                     }}>
                       {amenity.icon}
+                      <span style={{ fontSize: "12px" }}>{amenity.label}</span>
                     </div>
                   ))}
                   {room.amenities.length > 4 && (
-                    <span style={{ fontSize: "14px", color: "#9CA3AF" }}>
+                    <span style={{ 
+                      fontSize: "14px", 
+                      color: "#9CA3AF",
+                      backgroundColor: "rgba(45, 55, 72, 0.7)",
+                      padding: "4px 8px",
+                      borderRadius: "4px",
+                    }}>
                       +{room.amenities.length - 4} more
                     </span>
                   )}
