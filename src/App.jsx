@@ -8,6 +8,7 @@ import RoomsPage from './pages/Rooms';
 import ExperiencePage from './pages/espir';
 import BookNow from './pages/BookNowPage';
 import GalleryPage from './pages/GalleryPage';  // Added import
+import ContactPage from './pages/ContactPage';
 
 const App = () => {
   const [hasSeenOnboarding, setHasSeenOnboarding] = useState(() => {
@@ -39,7 +40,7 @@ const App = () => {
         <Route path="/Experience" element={<ExperiencePage/>}/>  
         <Route path="/Gallery" element={<GalleryPage/>}/>  {/* Added route */}
         <Route path="/BookNowPage" element={<BookNow/>}/>
-        <Route path="/Contact" element={<div>Contact Page (Coming Soon)</div>} /> {/* Added placeholder */}
+        <Route path="/Contact" element={<ContactPage/>} /> {/* Added placeholder */}
       </Routes>
     </BrowserRouter>
   );

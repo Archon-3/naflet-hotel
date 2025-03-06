@@ -13,7 +13,9 @@ import {
   LogOut,
   Bell,
   CreditCard,
-  HelpCircle
+  HelpCircle,
+  Phone,
+  Mail
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -590,153 +592,188 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer - Replaced with Experience Page Footer */}
       <footer style={{
-        backgroundColor: "#0f172a",
-        padding: "80px 24px 40px",
-        borderTop: "1px solid #2D3748",
+        backgroundColor: "#1a1b1e",
+        borderTop: "1px solid rgba(79, 70, 229, 0.3)",
+        padding: "48px 24px",
       }}>
         <div style={{
           maxWidth: "1400px",
           margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gap: "32px",
         }}>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "48px",
-            marginBottom: "64px",
-          }}>
-            <div>
-              <div style={{ 
-                color: "rgb(79, 70, 229)", 
-                fontSize: "28px", 
-                fontWeight: "bold",
-                marginBottom: "16px",
-              }}>
-                Naflet Hotel
-              </div>
-              <p style={{ color: "#9CA3AF", lineHeight: "1.6" }}>
-                Providing exceptional hospitality and unforgettable experiences for our guests.
-              </p>
-            </div>
-            
-            <div>
-              <h4 style={{ 
-                color: "rgb(255, 255, 255)", 
-                fontSize: "18px", 
-                marginBottom: "16px",
-                fontWeight: "bold",
-              }}>Quick Links</h4>
-              <ul style={{ 
-                listStyle: "none", 
-                padding: 0, 
-                margin: 0,
+          <div>
+            <h3 style={{
+              fontSize: "24px",
+              marginBottom: "24px",
+              color: "rgb(79, 70, 229)",
+            }}>
+              Naflet Hotel
+            </h3>
+            <p style={{
+              color: "#9CA3AF",
+              lineHeight: "1.6",
+              marginBottom: "16px",
+            }}>
+              At Naflet Hotel, We offer you an unparalleled combination of comfort and entertainment. We have quality standards designed to make your stay unique and unforgettable.
+            </p>
+          </div>
+          
+          <div>
+            <h3 style={{
+              fontSize: "20px",
+              marginBottom: "24px",
+              color: "rgb(79, 70, 229)",
+            }}>
+              Contact
+            </h3>
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "16px",
+              color: "#9CA3AF",
+            }}>
+              <div style={{
                 display: "flex",
-                flexDirection: "column",
+                alignItems: "flex-start",
                 gap: "12px",
               }}>
-                {["Home", "Rooms", "Experience", "Gallery", "Contact"].map((item) => (
-                  <li key={item}>
-                    <a 
-                      href="#" 
-                      style={{ 
-                        color: "#9CA3AF", 
-                        textDecoration: "none",
-                        transition: "color 0.2s",
-                        display: "inline-block",
-                      }}
-                      onMouseOver={(e) => e.target.style.color = "rgb(79, 70, 229)"}
-                      onMouseOut={(e) => e.target.style.color = "#9CA3AF"}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavigation(`/${item}Page`, item);
-                      }}
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h4 style={{ 
-                color: "rgb(255, 255, 255)", 
-                fontSize: "18px", 
-                marginBottom: "16px",
-                fontWeight: "bold",
-              }}>Contact</h4>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                <div style={{ color: "#9CA3AF" }}>
-                  <MapPin size={16} style={{ display: "inline", marginRight: "8px" }}/>
-                  123 Luxury Avenue, Addis Ababa, Ethiopia
-                </div>
-                <div style={{ color: "#9CA3AF" }}>
-                  📞 +251 123 456 789
-                </div>
-                <div style={{ color: "#9CA3AF" }}>
-                  ✉️ info@naflethotel.com
-                </div>
+                <MapPin size={20} style={{ marginTop: "4px" }} />
+                <span>Adama, Dembela Sub-City Wonji Mazoria</span>
               </div>
-            </div>
-            
-            <div>
-              <h4 style={{ 
-                color: "rgb(255, 255, 255)", 
-                fontSize: "18px", 
-                marginBottom: "16px",
-                fontWeight: "bold",
-              }}>Newsletter</h4>
-              <p style={{ color: "#9CA3AF", marginBottom: "16px" }}>
-                Subscribe to our newsletter for special deals and updates.
-              </p>
-              <div style={{ display: "flex" }}>
-                <input 
-                  type="email" 
-                  placeholder="Your email"
-                  style={{
-                    flex: 1,
-                    padding: "12px",
-                    backgroundColor: "#2D3748",
-                    border: "none",
-                    borderRadius: "8px 0 0 8px",
-                    color: "white",
-                  }}
-                />
-                <button style={{
-                  backgroundColor: "rgb(79, 70, 229)",
-                  color: "white",
-                  border: "none",
-                  padding: "0 16px",
-                  borderRadius: "0 8px 8px 0",
-                  cursor: "pointer",
-                }}>
-                  Subscribe
-                </button>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}>
+                <Phone size={20} />
+                <span>+251 222 113 301</span>
+              </div>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}>
+                <Phone size={20} />
+                <span>+251 906 444 400</span>
+              </div>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}>
+                <Mail size={20} />
+                <span>info@naflethotels.com</span>
               </div>
             </div>
           </div>
           
-          <div style={{
-            borderTop: "1px solid #2D3748",
-            paddingTop: "24px",
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "16px",
-          }}>
-            <div style={{ color: "#9CA3AF" }}>
-              © 2023 Naflet Hotel. All rights reserved.
-            </div>
-            <div style={{ 
-              display: "flex", 
-              gap: "24px",
-              color: "#9CA3AF",
+          <div>
+            <h3 style={{
+              fontSize: "20px",
+              marginBottom: "24px",
+              color: "rgb(79, 70, 229)",
             }}>
-              <a href="#" style={{ color: "#9CA3AF", textDecoration: "none" }}>Privacy Policy</a>
-              <a href="#" style={{ color: "#9CA3AF", textDecoration: "none" }}>Terms of Service</a>
+              Quick Links
+            </h3>
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+            }}>
+              {[
+                { name: "Home", path: "/HomePage" },
+                { name: "Rooms", path: "/Rooms" },
+                { name: "Experience", path: "/Experience" },
+                { name: "Gallery", path: "/Gallery" },
+                { name: "Contact", path: "/Contact" }
+              ].map((item, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(item.path, item.name);
+                  }}
+                  style={{
+                    color: "#9CA3AF",
+                    textDecoration: "none",
+                    transition: "color 0.3s ease",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.color = "rgb(79, 70, 229)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.color = "#9CA3AF";
+                  }}
+                >
+                  {item.name}
+                </a>
+              ))}
             </div>
           </div>
+          
+          <div>
+            <h3 style={{
+              fontSize: "20px",
+              marginBottom: "24px",
+              color: "rgb(79, 70, 229)",
+            }}>
+              Newsletter
+            </h3>
+            <p style={{
+              color: "#9CA3AF",
+              marginBottom: "16px",
+            }}>
+              Subscribe to our newsletter for updates and promotions
+            </p>
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "16px",
+            }}>
+              <input
+                type="email"
+                placeholder="Email address"
+                style={{
+                  padding: "12px 16px",
+                  backgroundColor: "#2D3748",
+                  border: "1px solid rgb(79, 70, 229)",
+                  borderRadius: "8px",
+                  color: "white",
+                  fontSize: "16px",
+                }}
+              />
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  backgroundColor: "rgb(79, 70, 229)",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "12px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
+                Subscribe
+              </motion.button>
+            </div>
+          </div>
+        </div>
+        
+        <div style={{
+          borderTop: "1px solid rgba(79, 70, 229, 0.3)",
+          marginTop: "48px",
+          paddingTop: "24px",
+          textAlign: "center",
+          color: "#9CA3AF",
+        }}>
+          <p>© Copyright Naflet Hotel 2023. All Rights Reserved.</p>
         </div>
       </footer>
     </div>
