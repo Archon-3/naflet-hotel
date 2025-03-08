@@ -7,19 +7,43 @@ import SignupPage from './pages/SignupPage';
 import RoomsPage from './pages/Rooms';
 import ExperiencePage from './pages/espir';
 import BookNow from './pages/BookNowPage';
-import GalleryPage from './pages/GalleryPage';  // Added import
+import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
+  // Safe localStorage access with fallback for environments like Poe Canvas
   const [hasSeenOnboarding, setHasSeenOnboarding] = useState(() => {
-    return localStorage.getItem('hasSeenOnboarding') === 'true';
+    try {
+      return localStorage.getItem('hasSeenOnboarding') === 'true';
+    } catch (error) {
+      console.warn('localStorage not available:', error);
+      return false; // Default to showing onboarding if storage isn't available
+    }
   });
 
   const handleOnboardingComplete = () => {
-    localStorage.setItem('hasSeenOnboarding', 'true');
-    setHasSeenOnboarding(true);
+    try {
+      localStorage.setItem('hasSeenOnboarding', 'true');
+      setHasSeenOnboarding(true);
+    } catch (error) {
+      console.warn('Failed to save to localStorage:', error);
+      setHasSeenOnboarding(true); // Still update state even if storage fails
+    }
   };
 
+  // For Poe Canvas, you might want to conditionally render without Router
+  // This is a check you could use to detect if you're in the Poe Canvas environment
+  const isPoeCanvas = () => {
+    return typeof window !== 'undefined' && window.Poe;
+  };
+
+  // If in Poe Canvas, render just the ProfilePage component directly
+  if (isPoeCanvas()) {
+    return <ProfilePage />;
+  }
+
+  // Normal router-based rendering for standard React apps
   return (
     <BrowserRouter>
       <Routes>
@@ -35,12 +59,16 @@ const App = () => {
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/HomePage" element={<HomePage/>}/>
-        <Route path="/Rooms" element={<RoomsPage/>}/>
-        <Route path="/Experience" element={<ExperiencePage/>}/>  
-        <Route path="/Gallery" element={<GalleryPage/>}/>  {/* Added route */}
-        <Route path="/BookNowPage" element={<BookNow/>}/>
-        <Route path="/Contact" element={<ContactPage/>} /> {/* Added placeholder */}
+        <Route path="/HomePage" element={<HomePage />} />
+        <Route path="/Rooms" element={<RoomsPage />} />
+        <Route path="/Experience" element={<ExperiencePage />} />  
+        <Route path="/Gallery" element={<GalleryPage />} />
+        <Route path="/BookNowPage" element={<BookNow />} />
+        <Route path="/Contact" element={<ContactPage />} />
+        <Route path="/Profile" element={<ProfilePage />} />
+        
+        {/* Fallback route for 404 - redirect to login */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );
