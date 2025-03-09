@@ -10,7 +10,8 @@ import BookNow from './pages/BookNowPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
-
+import SettingPage from './pages/SettingPage';
+import NotificationPage from './pages/NotificationPage';
 const App = () => {
   // Safe localStorage access with fallback for environments like Poe Canvas
   const [hasSeenOnboarding, setHasSeenOnboarding] = useState(() => {
