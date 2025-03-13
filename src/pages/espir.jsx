@@ -112,7 +112,7 @@ const ExperiencePage = () => {
       details: "7AM - 11AM",
       fullDescription: "Indulge in exquisite culinary creations at our restaurant. Start your day with our extensive international breakfast buffet featuring a wide selection of international and local dishes. From freshly baked pastries and bread to made-to-order omelets and traditional Ethiopian dishes, our breakfast offers something for every palate.",
       images: [
-        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+        "https://www.google.com/imgres?q=fine%20and%20dine&imgurl=https%3A%2F%2Fd2w1ef2ao9g8r9.cloudfront.net%2Fimages%2F_1600x1167_crop_center-center_82_line%2Ffinedining_1-75nb439xd_190614_130109.png&imgrefurl=https%3A%2F%2Fpos.toasttab.com%2Fresources%2Ffine-dining&docid=DjFvDGFpiF2JCM&tbnid=RD8xYxfyHit9hM&vet=12ahUKEwigiMq_sYeMAxWUVaQEHQnMKAEQM3oECBwQAA..i&w=1600&h=1167&hcb=2&ved=2ahUKEwigiMq_sYeMAxWUVaQEHQnMKAEQM3oECBwQAA",
         "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
       ]
     },
@@ -164,7 +164,7 @@ const ExperiencePage = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Nex Flame",
       role: "Business Traveler",
       comment: "My stay at Naflet Hotel exceeded all expectations. The sunrise view from my Executive Room was breathtaking, and the staff were incredibly attentive.",
       rating: 5,
