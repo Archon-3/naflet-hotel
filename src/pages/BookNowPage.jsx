@@ -242,7 +242,7 @@ const BookNowPage = () => {
 
   // Profile Menu Component
   const ProfileMenu = () => (
-    <AnimatePresence>
+    <AnimatePresence mode="sync">
       {isProfileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -498,7 +498,7 @@ const BookNowPage = () => {
             {step < 5 && <Progress />}
             
             {/* Step 1: Room Selection */}
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               {step === 1 && (
                 <motion.div
                   key="step1"
@@ -971,7 +971,7 @@ const BookNowPage = () => {
                     {errors.payment && <div style={{ color: '#EF4444', fontSize: '14px', marginBottom: '16px' }}>{errors.payment}</div>}
                   </div>
                   
-                  <AnimatePresence>
+                  <AnimatePresence mode="sync">
                     {paymentMethod === 'Credit Card' && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
@@ -1544,66 +1544,66 @@ const BookNowPage = () => {
                   </div>
                 </motion.div>
               )}
+            </AnimatePresence>
               
-              {/* Booking Completion Animation */}
-              <AnimatePresence>
-                {isBookingComplete && step === 4 && (
+            {/* Booking Completion Animation */}
+            <AnimatePresence mode="sync">
+              {isBookingComplete && step === 4 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 1000
+                  }}
+                >
                   <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    initial={{ scale: 0.5 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     style={{
-                      position: 'fixed',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                      width: '120px',
+                      height: '120px',
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      zIndex: 1000
+                      position: 'relative'
                     }}
                   >
                     <motion.div
-                      initial={{ scale: 0.5 }}
+                      initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                      transition={{ delay: 0.3, duration: 0.5 }}
                       style={{
-                        width: '120px',
-                        height: '120px',
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgb(79, 70, 229)',
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center',
-                        position: 'relative'
+                        alignItems: 'center'
                       }}
                     >
                       <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.5 }}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          borderRadius: '50%',
-                          backgroundColor: 'rgb(79, 70, 229)',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center'
-                        }}
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.6, duration: 0.3 }}
                       >
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6, duration: 0.3 }}
-                        >
-                          <Check size={60} />
-                        </motion.div>
+                        <Check size={60} />
                       </motion.div>
                     </motion.div>
                   </motion.div>
-                )}
-              </AnimatePresence>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
         </div>
