@@ -10,6 +10,7 @@ import BookNow from './pages/BookNowPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import ProfilePage from './pages/ProfilePage';
+import Navbar from './pages/Navbar';
 
 
 const App = () => {
@@ -67,6 +68,10 @@ const App = () => {
         <Route path="/BookNowPage" element={<BookNow />} />
         <Route path="/Contact" element={<ContactPage />} />
         <Route path="/Profile" element={<ProfilePage />} />
+        <Route path="/Settings" element={<ProfilePage />} /> {/* Using ProfilePage as a placeholder */}
+        <Route path="/Notifications" element={<ProfilePage />} /> {/* Using ProfilePage as a placeholder */}
+        <Route path="/Billing" element={<ProfilePage />} /> {/* Using ProfilePage as a placeholder */}
+        <Route path="/Help" element={<ProfilePage />} /> {/* Using ProfilePage as a placeholder */}
         
         {/* Fallback route for 404 - redirect to login */}
         <Route path="*" element={<Navigate to="/login" replace />} />

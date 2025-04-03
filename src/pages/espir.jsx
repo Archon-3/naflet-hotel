@@ -126,35 +126,35 @@ const ExperiencePage = () => {
 
   const testimonials = [
     {
-      name: "Nex Flame",
+      name: "Abreham Kebede",
       role: "Business Traveler",
       comment: "My stay at Naflet Hotel exceeded all expectations. The sunrise view from my Executive Room was breathtaking, and the staff were incredibly attentive.",
       rating: 5,
       avatar: "https://i.imgur.com/8Km9tLL.jpg"
     },
     {
-      name: "Michael Chen",
+      name: "Henok demise",
       role: "Vacation Guest",
       comment: "The international breakfast buffet was exceptional with a great mix of Ethiopian and Western dishes. The central location in Adama made exploring the city very convenient.",
       rating: 5,
       avatar: "https://i.imgur.com/bxMWZ5H.jpg"
     },
     {
-      name: "Emma Williams",
+      name: "Abredagn Kebede",
       role: "Honeymoon Stay",
       comment: "We held our wedding reception at Naflet Hotel and stayed in the Family Room afterward. Everything was perfect from the catering to the accommodation.",
       rating: 4.8,
       avatar: "https://i.imgur.com/NuElMTm.jpg"
     },
     {
-      name: "Robert Garcia",
+      name: "Abel GEtahun",
       role: "Family Vacation",
       comment: "The Family Room was spacious enough for all of us, and the kids loved the environment. The Jacuzzi was a big hit with everyone after a day of sightseeing.",
       rating: 4.9,
       avatar: "https://i.imgur.com/7rA36Ji.jpg"
     },
     {
-      name: "Priya Sharma",
+      name: "Abenezer Abebe",
       role: "Solo Traveler",
       comment: "As a solo traveler, I felt very safe and comfortable at Naflet Hotel. The central location in Adama was perfect, and the staff went above and beyond to help me plan daily excursions.",
       rating: 5,
