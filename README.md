@@ -8,7 +8,7 @@ An end-to-end hotel management platform that allows guests to register, browse r
 📅 Booking System	Calendar-based booking with confirmation flow
 💻 Responsive UI	Fully functional on mobile, tablet, and desktop
 🖼️ UI Showcase
-<p align="center"> <img src="assets/login.png" alt="Login Page" width="400"/> <img src="assets/signup.png" alt="Signup Page" width="400"/> <br/><br/> <img src="assets/rooms.png" alt="Rooms Page" width="400"/> <img src="assets/admin.png" alt="Experiance Page" width="400"/> </p>
+<p align="center"> <img src=""C:\Users\hp\naflet hotel\src\assets\login.png"" alt="Login Page" width="400"/> <img src="assets/signup.png" alt="Signup Page" width="400"/> <br/><br/> <img src="assets/rooms.png" alt="Rooms Page" width="400"/> <img src="assets/admin.png" alt="Experiance Page" width="400"/> </p>
 ⚙️ Built With
 Frontend: React + Vite + CSS
 
