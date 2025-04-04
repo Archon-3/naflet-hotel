@@ -16,8 +16,7 @@ Frontend: React + Vite + CSS
 bash
 Copy
 Edit
-git clone https://github.com/Archon-3/naflet-hotel.git
-cd hotel-management-app
+git clone https://github.com/Archon-3/naflet-hotel
 npm install
 npm run dev
 🧑‍💻 About the Developer
