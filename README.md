@@ -1,8 +1,25 @@
-# React + Vite
+🏨 Hotel Management Web App
+A modern web application designed to streamline hotel management tasks such as bookings, room listings, user registrations, and more. Built with React for a sleek, responsive interface.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Features
+🔐 User Authentication – Login and Signup for both customers and admins
 
-Currently, two official plugins are available:
+🏠 Room Listings – Browse all available rooms with filters
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📅 Booking System – Book rooms with real-time availability
+
+📈 Responsive UI – Mobile-friendly and clean design
+
+🖼️ UI Screenshots
+🔐 Login Page
+
+📝 Signup Page
+
+🏨 Rooms Page
+
+📊 Admin Dashboard
+
+You can replace the image paths above with the actual URLs of the images you've uploaded to your repo (inside an assets or screenshots folder, for example).
+s
+⚙️ Tech Stack
+Frontend: React, CSs
