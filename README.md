@@ -1,8 +1,28 @@
-# React + Vite
+🎯 Overview
+An end-to-end hotel management platform that allows guests to register, browse rooms, and make bookings — while giving admins full control over room listings and user data.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Core Features
+✅ Feature	🧠 Description
+🔐 User Auth	Secure login/signup with role-based access (guest/admin)
+🛏️ Room Explorer	Users can browse, filter, and view room availability
+📅 Booking System	Calendar-based booking with confirmation flow
+💻 Responsive UI	Fully functional on mobile, tablet, and desktop
+🖼️ UI Showcase
+<p align="center"> <img src="C:\Users\hp\naflet hotel\src\assets\login.png" alt="Login Page" width="400"/> <img src="assets/signup.png" alt="Signup Page" width="400"/> <br/><br/> <img src="assets/rooms.png" alt="Rooms Page" width="400"/> <img src="assets/admin.png" alt="Experiance Page" width="400"/> </p>
+⚙️ Built With
+Frontend: React + Vite + CSS
 
-Currently, two official plugins are available:
+🛠️ Getting Started
+bash
+Copy
+Edit
+git clone https://github.com/Archon-3/naflet-hotel.git
+cd hotel-management-app
+npm install
+npm run dev
+🧑‍💻 About the Developer
+Made with 💻 & ☕ by Abenezer
+🔗 GitHub | 🌐 Portfolio
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📃 License
+This project is licensed under the MIT License.
