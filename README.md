@@ -1,3 +1,4 @@
+THE HOTEL
 🎯 Overview
 An end-to-end hotel management platform that allows guests to register, browse rooms, and make bookings — while giving admins full control over room listings and user data.
 
