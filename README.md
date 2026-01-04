@@ -17,6 +17,8 @@ The project focuses on usability, scalability, and clean UI/UX across all device
 | 💻 **Responsive UI** | Fully optimized for mobile, tablet, and desktop devices |
 
 ---
+## 🖼️ UI Showcase
+
 <p align="center"> <img src="https://github.com/Archon-3/naflet-hotel/blob/main/src/assets/login.png" alt="Login Page" width="700"/><br/><br/> <img src="https://github.com/Archon-3/naflet-hotel/blob/main/src/assets/signup.png" alt="Signup Page" width="700"/> <br/><br/> <img src="https://github.com/Archon-3/naflet-hotel/blob/main/src/assets/room.png" alt="Rooms Page" width="700"/> <br/><br/><img src="https://github.com/Archon-3/naflet-hotel/blob/main/src/assets/experiance.png" alt="Experiance Page" width="700"/><br/><br/>  <img src="https://github.com/Archon-3/naflet-hotel/blob/main/src/assets/gallery.png" alt="Gallery page" width="700"/> <br/><br/> <img src="https://github.com/Archon-3/naflet-hotel/blob/main/src/assets/booking.png" alt="Booking page" width="700"/> </p>
 ⚙️ Built With
 Frontend: React + Vite + CSS
